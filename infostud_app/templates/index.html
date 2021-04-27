@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <style>
+        table {
+          font-family: arial, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+
+        td, th {
+          border: 1px solid #dddddd;
+          text-align: left;
+          padding: 8px;
+        }
+
+        tr:nth-child(even) {
+          background-color: #dddddd;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Infostud Jobs</title>
+</head>
+<body>
+        <table style="width:100%">
+          <tr>
+            <th>Company</th>
+            <th>Address</th>
+            <th>Job title</th>
+            <th>Job details</th>
+            <th> Expiry date of post</th>
+          </tr>
+        {% for one_job in data %}
+
+          <tr>
+            <td>{{one_job['employer_name']}}</td>
+            <td>{{one_job['job_address']}}</td>
+            <td>{{one_job['job_title']}}</td>
+            <td>{{",".join(one_job['job_details'])}}</td>
+            <td>{{one_job['published_date'].strftime("%d.%m.%Y.")}}</td>
+          </tr>
+        {% endfor %}
+        </table>
+
+</body>
+
+{% endblock %}
